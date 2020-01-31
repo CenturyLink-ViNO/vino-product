@@ -1,0 +1,10 @@
+[Unit]
+Description = Bring up ViNO docker containers
+After = docker.service
+
+[Service]
+WorkingDirectory = /opt/vino/vino-docker
+ExecStart = /opt/vino/vino-docker/vinoStartFast.sh
+
+[Install]
+WantedBy = multi-user.target

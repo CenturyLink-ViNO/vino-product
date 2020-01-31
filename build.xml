@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<project name='vino' default='dist' xmlns:ivy='antlib:org.apache.ivy.ant'>
+
+   <property environment="env"/>
+   <import file='${env.ANT_TOOLS_HOME}/ant.init.xml'/>
+
+   <dirname property="vino.dir" file="${ant.file.vino}"/>
+
+   <target name='vino'>
+      <subant inheritrefs='false' target='dist'>
+         <fileset dir='${vino.dir}' includes='build.xml'/>
+      </subant>
+   </target>
+
+   <target name='dist'>
+      <uptodate property='up-to-date' targetfile='${tmp.dir}/${ant.project.name}.built.at'>
+         <srcfiles dir='${basedir}' includes='**/*'/>
+      </uptodate>
+      <if>
+         <not>
+            <isset property='up-to-date'/>
+         </not>
+         <then>
+            <antcall target='distribute'/>
+            <mkdir dir='${tmp.dir}'/>
+            <touch file='${tmp.dir}/${ant.project.name}.built.at'/>
+         </then>
+         <else>
+            <echo message='${ant.project.name} already up to date'/>
+         </else>
+      </if>
+   </target>
+
+   <target name='distribute' depends='deps, docker.dist'/>
+
+   <target name='deps'>
+       <build.dependent.library dir='components/vino-core'/>
+   </target>
+
+</project>

@@ -1,0 +1,12 @@
+filebeat.prospectors:
+
+- type: log
+  tags: ["vino"]
+  paths:
+    - "/var/log/vino/*.log"
+
+output.logstash:
+  hosts: [ "127.0.0.1:5044" ]
+  loadbalancer: true
+  index: filebeat
+  bulk_max_size: 2048

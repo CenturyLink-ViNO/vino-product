@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<project name='product-settings' xmlns:ivy='antlib:org.apache.ivy.ant'>
+
+   <property name='target.os.hostname' value='${abacus.product.name}'/>
+   <property name='target.os.username' value='${abacus.product.name}'/>
+   <property name='target.os.userpass' value='${abacus.product.name}'/>
+   <property name='target.os.vmname'   value='${abacus.product.name}'/>
+   <property name='target.os.repourl'  value='http://mirrors.mit.edu/centos/7/os/x86_64'/>
+
+   <property name='version.major'    value='1'/>
+   <property name='version.minor'    value='0'/>
+   <property name='version.revision' value='1'/>
+   <property name='version.fix'      value='0'/>
+
+</project>

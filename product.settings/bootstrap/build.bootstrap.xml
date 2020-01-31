@@ -1,0 +1,82 @@
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<project name='bootstrap-build-file' default='all' xmlns:ivy='antlib:org.apache.ivy.ant'>
+
+   <property environment="env"/>
+   <import file='${env.ANT_TOOLS_HOME}/ant.init.xml'/>
+
+   <!-- add -Dbuild.vm.images=1 to create virtual machine images -->
+   <!-- add -Dskipgit=1 to skip the git updates -->
+
+   <import>
+      <fileset dir=".">
+         <exclude name='**/build.bootstrap.xml'/> <!-- this file -->
+         <exclude name="forks/**"/>               <!--  these are built via our build files, so shouldn't be imported -->
+         <exclude name="mirrors/**"/>             <!--  these are built via our build files, so shouldn't be imported -->
+         <exclude name="tools/**"/>               <!--  need these, but don't build them -->
+         <exclude name="dev-env/**"/>             <!-- need these, but don't build them -->
+         <exclude name="products/**"/>            <!-- need these, but don't build them -->
+         <include name="**/build.xml"/>
+      </fileset>
+   </import>
+
+   <target name='showState'>
+      <header.info verbose='true' quiet='false'/>
+   </target>
+
+   <target name='check'>
+      <check.basic.requirements/>
+   </target>
+
+   <target name='all' depends='showState, git.update'>
+      <clean.static.analysis.results dir='${dist.root}'/>
+      <build.projects.from.repo.file repo.file="${tree.top}/${abacus.product.name}/product.settings/repos.properties.xml"/>
+      <echo>
+
+         ========== ${abacus.product.name} Build Complete =================
+
+      </echo>
+      <summarize.java.static.analysis dir='${dist.root}'/>
+   </target>
+
+   <target name="git.update">
+      <if>
+         <not>
+            <equals arg1='${skipgit}' arg2='1'/>
+         </not>
+         <then>
+            <update.repos.from.repo.file repo.file="${tree.top}/${abacus.product.name}/product.settings/repos.properties.xml"/>
+         </then>
+         <else>
+            <echo message='not updating git skipgit set to ${skipgit}'/>
+         </else>
+      </if>
+   </target>
+
+   <target name='build' depends='clean, all' description='clean and then create distributable'/>
+   <target name='build-all' depends='clean-all, all' description='clean and then create distributable'/>
+
+   <target name='clean' description='Deletes build files'>
+      <if>
+         <available file="${tree.top}/build" type="dir" />
+         <then>
+            <delete dir="${tree.top}/build" failonerror='true'/>
+         </then>
+      </if>
+   </target>
+
+   <target name='clean-bin' description='Deletes binary packages only'>
+      <delete dir='${tree.top}/build/bin' failonerror='false'/>
+   </target>
+
+   <target name='clean-all' depends='clean'>
+      <docker.remove.dangling.images/>
+      <if>
+         <typefound name='ivy.clean.cache'/>
+         <then>
+            <ivy.clean.cache/>
+         </then>
+      </if>
+      <delete dir='${user.home}/.ivy2/local'/>
+   </target>
+
+</project>

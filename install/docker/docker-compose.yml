@@ -1,0 +1,67 @@
+version: "3.3"
+services:
+
+    ui:
+      image: vino-proxy:1.0.1.0
+      ports: ["80:80"]
+      depends_on:
+        - vino-core
+        - keycloak
+      volumes:
+        - ViNO-Common:/opt/vino/common:z
+        - ViNO-NGINX:/etc/nginx:ro
+      restart: always
+
+    vino-core:
+      image: vino-core:1.0.1.0
+      depends_on:
+        - db
+        - keycloak
+      volumes:
+        - ViNO-Common:/opt/vino/common:z
+        - ViNO-Logs:/var/log/vino/activations:z
+        - ViNO-Node-RED:/root/.node-red:z
+      environment:
+        - KEYCLOAK_HOST
+        - KEYCLOAK_PORT
+        - KEYCLOAK_REALM
+        - KEYCLOAK_CLIENT_ID
+        - KEYCLOAK_CLIENT_SECRET
+        - KEYCLOAK_PROTOCOL
+        - NODE_OPTIONS
+        - NODE_TLS_REJECT_UNAUTHORIZED
+        - VINO_SECRET
+        - NODE_EXTRA_CA_CERTS
+      restart: always
+
+    db:
+      image: vino-database:1.0.1.0
+      volumes:
+        - ViNO-DB:/var/lib/postgresql/data:z
+      environment:
+        POSTGRES_PASSWORD: vino
+      restart: always
+
+    keycloak:
+      image: vino-keycloak:1.0.1.0
+      environment:
+        DB_VENDOR: POSTGRES
+        DB_ADDR: db
+        DB_DATABASE: vino
+        DB_USER: abacus
+        DB_PASSWORD: abacus
+        KEYCLOAK_USER: admin
+        KEYCLOAK_PASSWORD: changethis
+        PROXY_ADDRESS_FORWARDING: "true"
+      depends_on:
+        - db
+      restart: always
+
+volumes:
+  API-Overrides:
+  SettingsOverrides:
+  ViNO-NGINX:
+  ViNO-Common:
+  ViNO-Logs:
+  ViNO-DB:
+  ViNO-Node-RED:
