@@ -1,0 +1,133 @@
+{
+   "name":"nfviPod",
+   "displayName":"NFVi Pod",
+   "defaults":{
+      "name":"default",
+      "displayName":"NFVi Pod Defaults",
+      "groups":[
+         {
+            "name":"openstack",
+            "displayName":"OpenStack",
+            "scalars":[
+               {
+                  "name":"sshPrivateKey",
+                  "value":"/opt/vino/vino-core/etc/vino_ssh.pem",
+                  "displayName":"SSH Private Key",
+                  "required":true,
+                  "type":"string"
+               },
+               {
+                  "name":"allowInsecureConnections",
+                  "value":"true",
+                  "displayName":"Allow Insecure Connections",
+                  "required":true,
+                  "type":"bool"
+               },
+               {
+                  "name":"apiVersion",
+                  "value":"v3",
+                  "displayName":"API Version",
+                  "required":true,
+                  "type":"string"
+               },
+               {
+                  "name":"tenantId",
+                  "value":"placeholder",
+                  "displayName":"Tenant ID",
+                  "required":true,
+                  "type":"string"
+               },
+               {
+                  "name":"server",
+                  "value":"0.0.0.0",
+                  "displayName":"Host",
+                  "required":true,
+                  "type":"string"
+               },
+               {
+                  "name":"authUrl",
+                  "value":"placeholder",
+                  "displayName":"Authorization URL",
+                  "required":true,
+                  "type":"string"
+               },
+               {
+                  "name":"tenantName",
+                  "value":"placeholder",
+                  "displayName":"Tenant Name",
+                  "type":"string"
+               },
+               {
+                  "name":"regionName",
+                  "value":"placeholder",
+                  "displayName":"Region Name",
+                  "type":"string"
+               },
+               {
+                  "name":"projectName",
+                  "value":"placeholder",
+                  "displayName":"Project Name",
+                  "type":"string"
+               },
+               {
+                  "name":"domainName",
+                  "value":"placeholder",
+                  "displayName":"Domain Name",
+                  "type":"string"
+               },
+               {
+                  "name":"sshKey",
+                  "value":"/opt/vino/vino-api/etc/vino_ssh.pub",
+                  "displayName":"SSH Key",
+                  "type":"string"
+               },
+               {
+                  "name":"user",
+                  "value":"placeholder",
+                  "displayName":"User",
+                  "type":"string"
+               },
+               {
+                  "name":"password",
+                  "value":"placeholder",
+                  "displayName":"Password",
+                  "type":"string"
+               },
+               {
+                  "name":"networkIds",
+                  "value":"",
+                  "displayName":"Network IDs",
+                  "type":"string"
+               },
+               {
+                  "name":"useFloatingIp",
+                  "value":false,
+                  "displayName":"Use Floating IP",
+                  "type":"bool"
+               },
+               {
+                  "name":"floatingIpPool",
+                  "value":"placeholder",
+                  "displayName":"Floating IP Pool",
+                  "type":"string"
+               },
+               {
+                  "name":"vmManagementNetwork",
+                  "value":"placeholder",
+                  "displayName":"VM Management Network",
+                  "type":"string"
+               }
+            ]
+         }
+      ],
+      "scalars":[
+         {
+            "name":"deploymentType",
+            "value":"development",
+            "displayName":"Deployment Type",
+            "required":true,
+            "type":"string"
+         }
+      ]
+   }
+}

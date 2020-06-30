@@ -4,17 +4,17 @@
       <common url='git@github.com:CenturyLink-ViNO' cloneDirectory='${tree.top}' ref='master'/>
    </shared>
    <repos>
-      <repository name='dev-env-public'                 prefix='tools/dev-env' target='DO-NOT-BUILD'             cloneDirectory='${tree.top}/tools/dev-env/public'/>
-      <repository name='abacus-shell-libs-vino'         prefix='components'    target='abacus-shell-libs'        cloneDirectory='${tree.top}/components/abacus-shell-libs'/>
-      <repository name='abacus-postgres-vino'           prefix='components'    target='abacus-postgres'          cloneDirectory='${tree.top}/components/abacus-postgres'/>
-      <repository name='lib-java-webui-vino'            prefix='lib'           target='lib-java-web-ui'          cloneDirectory='${tree.top}/lib/lib-java-web-ui'/>
+      <repository name='dev-env-public'                 prefix='tools/dev-env' target='DO-NOT-BUILD'                   cloneDirectory='${tree.top}/tools/dev-env/public'/>
+      <repository name='abacus-shell-libs-vino'         prefix='components'    target='abacus-shell-libs'              cloneDirectory='${tree.top}/components/abacus-shell-libs'/>
+      <repository name='abacus-postgres-vino'           prefix='components'    target='abacus-postgres'                cloneDirectory='${tree.top}/components/abacus-postgres'/>
+      <repository name='vino-opensource-customizations' prefix='lib'           target='vino-opensource-customizations' cloneDirectory='${tree.top}/lib/vino-opensource-customizations'/>
+      <repository name='abacus-twitter-bootstrap-vino'  prefix='lib-web'       target='abacus-twitter-bootstrap'       cloneDirectory='${tree.top}/lib-web/abacus-twitter-bootstrap'/>
+      <repository name='lib-java-webui-vino'            prefix='lib'           target='lib-java-web-ui'                cloneDirectory='${tree.top}/lib/lib-java-web-ui'/>
       <repository name='abacus-nodelib-util'            prefix='lib'           target='DO-NOT-BUILD'/>
-      <repository name='jquery-fork'                    prefix='forks'         target='DO-NOT-BUILD'             cloneDirectory='${tree.top}/forks/web-jquery-fork'             ref='vino-master'/>
-      <repository name='abacus-jquery-vino'             prefix='lib-web'       target='abacus-jquery'            cloneDirectory='${tree.top}/lib-web/abacus-jQuery'/>
-      <repository name='twitter-bootstrap-fork-vino'    prefix='forks'         target='DO-NOT-BUILD'             cloneDirectory='${tree.top}/forks/web-bootstrap-fork'          ref='vino-master'/>
-      <repository name='abacus-twitter-bootstrap-vino'  prefix='lib-web'       target='abacus-twitter-bootstrap' cloneDirectory='${tree.top}/lib-web/abacus-twitter-bootstrap'/>
-      <repository name='abacus-lib-js-ots-vino'         prefix='lib-web'       target='DO-NOT-BUILD'             cloneDirectory='${tree.top}/lib-web/abacus-lib-js-ots'/>
-      <repository name='vino-opensource-customizations' prefix='lib'           target='DO-NOT-BUILD'             cloneDirectory='${tree.top}/lib/vino-opensource-customizations'/>
+      <repository name='jquery-fork'                    prefix='forks'         target='DO-NOT-BUILD'                   cloneDirectory='${tree.top}/forks/web-jquery-fork'             ref='vino-master'/>
+      <repository name='abacus-jquery-vino'             prefix='lib-web'       target='abacus-jquery'                  cloneDirectory='${tree.top}/lib-web/abacus-jQuery'/>
+      <repository name='twitter-bootstrap-fork-vino'    prefix='forks'         target='DO-NOT-BUILD'                   cloneDirectory='${tree.top}/forks/web-bootstrap-fork'          ref='vino-master'/>
+      <repository name='abacus-lib-js-ots-vino'         prefix='lib-web'       target='DO-NOT-BUILD'                   cloneDirectory='${tree.top}/lib-web/abacus-lib-js-ots'/>
       <repository name='vino-node-red-nodes'            prefix='components'    target='vino-node-red-nodes'/>
       <repository name='vino-core-nodes'                prefix='components'    target='vino-core-nodes'/>
       <repository name='vino-core'                      prefix='components'    target='vino-core'/>

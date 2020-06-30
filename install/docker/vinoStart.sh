@@ -9,14 +9,28 @@ fi
 getVinoName $1
 
 export KEYCLOAK_HOST=$KEYCLOAK_HOST_LAST
-if [ "$HTTPS_LAST" == "true" ]; then
+if [[ "$HTTPS_LOCAL_LAST" == "yes" || "$HTTPS_PROXY_LAST" == "yes" ]]; then
   export KEYCLOAK_PROTOCOL=https
-  export NODE_TLS_REJECT_UNAUTHORIZED=0 # Comment out if the upstream is not using an self-signed or otherwise unrecognixzed certificate (browser recognized)
+  export VINO_PORT=3443
+  export NGINX_DIR="nginx"
+  if [ "$HTTPS_LOCAL_LAST" == "yes" ]; then
+    export KEYCLOAK_PRE_START_SCRIPT="keycloak_docker_entrypoint_ssl.sh"
+    export NGINX_DIR="nginx.ssl"
+    export VINO_HTTPS="true"
+  fi
+  # export NODE_TLS_REJECT_UNAUTHORIZED=0 # Uncomment if the upstream, or local containers are using a cert not signed by a trusted CA
 else
+  export NGINX_DIR="nginx"
   export KEYCLOAK_PROTOCOL=http
+  export KEYCLOAK_PRE_START_SCRIPT="keycloak_docker_entrypoint.sh"
+  export VINO_PORT=3000
 fi
+if [[ "$CA_BUNDLE_ADDED_LAST" == "true" ]]; then
+  export X509_CA_BUNDLE=/var/lib/docker/volumes/${VINONAME}_ViNO-Common/_data/ca-bundle.crt
+fi
+
 # export KEYCLOAK_PORT=8080 # Not needed in the default environment
-export KEYCLOAK_REALM=vino
+export KEYCLOAK_REALM=$KEYCLOAK_REALM_LAST
 export KEYCLOAK_CLIENT_ID=$KEYCLOAK_CLIENT_ID_LAST
 # The following should be re-generated in the authentication management UI and updated in this script (/auth/)
 export KEYCLOAK_CLIENT_SECRET=$KEYCLOAK_SECRET_LAST
