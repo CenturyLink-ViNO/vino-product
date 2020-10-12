@@ -2,7 +2,7 @@ version: "3.3"
 services:
 
     ui:
-      image: vino-proxy:1.1.1.0
+      image: vino-proxy:1.1.2.0
       ports: ["80:80", "443:443"]
       depends_on:
         - vino-core
@@ -15,7 +15,7 @@ services:
       restart: always
 
     vino-core:
-      image: vino-core:1.1.1.0
+      image: vino-core:1.1.2.0
       depends_on:
         - db
         - keycloak
@@ -40,7 +40,7 @@ services:
       restart: always
 
     db:
-      image: vino-database:1.1.1.0
+      image: vino-database:1.1.2.0
       volumes:
         - ViNO-DB:/var/lib/postgresql/data:z
       environment:
@@ -48,7 +48,7 @@ services:
       restart: always
 
     keycloak:
-      image: vino-keycloak:1.1.1.0
+      image: vino-keycloak:1.1.2.0
       environment:
         DB_VENDOR: POSTGRES
         DB_ADDR: db

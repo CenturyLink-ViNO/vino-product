@@ -105,7 +105,7 @@ function install()
          [ -f "$i" ] || break
          docker load -q -i "$i"
       done
-      logLine "The ViNO docker images have been loaded. Please see the Virtual Network Orchestrator (ViNO) Installation Guide for detailed instructions on how to setup and run ViNO."
+      logLine "The ViNO docker images have been loaded. Please see the Virtual Network Orchestrator (ViNO) User Guide for detailed instructions on how to setup and run ViNO."
    fi
 
    /bin/date
