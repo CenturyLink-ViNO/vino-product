@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <repositories>
    <shared>
-      <common url='git@github.com:CenturyLink-ViNO' cloneDirectory='${tree.top}' ref='master'/>
+      <common url='git@github.com:CenturyLink-ViNO' cloneDirectory='${tree.top}' ref='release/1.1.4'/>
    </shared>
    <repos>
       <repository name='dev-env-public'                 prefix='tools/dev-env' target='DO-NOT-BUILD'                   cloneDirectory='${tree.top}/tools/dev-env/public'                                                     />
@@ -11,9 +11,9 @@
       <repository name='abacus-twitter-bootstrap-vino'  prefix='lib-web'       target='abacus-twitter-bootstrap'       cloneDirectory='${tree.top}/lib-web/abacus-twitter-bootstrap'                                         />
       <repository name='lib-java-webui-vino'            prefix='lib'           target='lib-java-web-ui'                cloneDirectory='${tree.top}/lib/lib-java-web-ui'                                                      />
       <repository name='abacus-nodelib-util'            prefix='lib'           target='DO-NOT-BUILD'                   cloneDirectory='${tree.top}/lib/abacus-nodelib-util'                                                  />
-      <repository name='jquery-fork'                    prefix='forks'         target='DO-NOT-BUILD'                   cloneDirectory='${tree.top}/forks/web-jquery-fork'               ref='vino-master'                    />
+      <repository name='jquery-fork'                    prefix='forks'         target='DO-NOT-BUILD'                   cloneDirectory='${tree.top}/forks/web-jquery-fork'               ref='release/vino-1.1.4'             />
       <repository name='abacus-jquery-vino'             prefix='lib-web'       target='abacus-jquery'                  cloneDirectory='${tree.top}/lib-web/abacus-jquery'                                                    />
-      <repository name='twitter-bootstrap-fork-vino'    prefix='forks'         target='DO-NOT-BUILD'                   cloneDirectory='${tree.top}/forks/web-bootstrap-fork'            ref='vino-master'                    />
+      <repository name='twitter-bootstrap-fork-vino'    prefix='forks'         target='DO-NOT-BUILD'                   cloneDirectory='${tree.top}/forks/web-bootstrap-fork'            ref='release/vino-1.1.4'                    />
       <repository name='abacus-lib-js-ots-vino'         prefix='lib-web'       target='DO-NOT-BUILD'                   cloneDirectory='${tree.top}/lib-web/abacus-lib-js-ots'                                                />
       <repository name='vino-node-red-nodes'            prefix='components'    target='vino-node-red-nodes'            cloneDirectory='${tree.top}/components/vino-node-red-nodes'                                           />
       <repository name='vino-core-nodes'                prefix='components'    target='vino-core-nodes'                cloneDirectory='${tree.top}/components/vino-core-nodes'                                               />
