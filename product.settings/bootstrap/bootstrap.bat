@@ -35,3 +35,4 @@ IF NOT EXIST build.xml (
 endlocal
 cd %~dp0..\..\..
 set ANT_TOOLS_HOME=%~dp0..\..\..\tools\dev-env\public\ant\
+pushd %ANT_TOOLS_HOME% && cd && popd

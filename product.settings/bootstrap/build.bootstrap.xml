@@ -52,6 +52,20 @@
       </if>
    </target>
 
+   <target name="git.status">
+      <if>
+         <not>
+            <equals arg1='${skipgit}' arg2='1'/>
+         </not>
+         <then>
+            <git.status.from.repo.file repo.file="${tree.top}/${abacus.product.name}/product.settings/repos.properties.xml"/>
+         </then>
+         <else>
+            <echo message='not checking git status - skipgit set to ${skipgit}'/>
+         </else>
+      </if>
+   </target>
+
    <target name='build' depends='clean, all' description='clean and then create distributable'/>
    <target name='build-all' depends='clean-all, all' description='clean and then create distributable'/>
 

@@ -32,7 +32,9 @@
       </if>
    </target>
 
-   <target name='distribute' depends='deps, docker.dist'/>
+   <target name='distribute' depends='deps'>
+      <docker.dist docker-dist.dir='${dist.root}/project/vino-docker/${build.mode}/image/vino-docker/etc'/>
+   </target>
 
    <target name='deps'>
        <build.dependent.library dir='components/vino-core'/>

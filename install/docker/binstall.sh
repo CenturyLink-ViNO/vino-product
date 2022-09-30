@@ -73,20 +73,21 @@ function install()
    if [ $ret -ne 0 ]; then
       logLine "dockerLog - Initial installation failed, repair the issues above and run the installer again."
    else
+      set -e
       usermod -aG docker $(whoami)
       systemctl enable docker.service
       systemctl start docker.service
       yum install -y epel-release
-      yum install -y python-pip
+      yum install -y python3
       yum install -y jq
       yum upgrade -y python*
       yum install -y gcc
       yum install -y python-devel
-      pip install yq
-      pip install --upgrade pip
-      pip install jsonschema
-      pip install requests --ignore-installed
-      pip install docker-compose
+      pip3 install --upgrade pip
+      pip3 install yq
+      pip3 install jsonschema
+      pip3 install requests --ignore-installed
+      pip3 install docker-compose
       mkdir -p /opt/vino/vino-docker
       cp docker-compose.yml getip.sh /opt/vino/vino-docker
       cp vinoctl.sh vinoInit.sh vinoRestart.sh vinoStart.sh vinoStartFast.sh vinoStop.sh vinoUninstall.sh vinoNewServiceManager.sh utils.sh initialize.sh /opt/vino/vino-docker
@@ -101,10 +102,11 @@ function install()
       mkdir -p /opt/vino/vino-docker/uninstall
       cp uninstall/* /opt/vino/vino-docker/uninstall
       chmod +x /opt/vino/vino-docker/uninstall/*.sh
-      for i in *.tgz; do
+      for i in *.tar; do
          [ -f "$i" ] || break
          docker load -q -i "$i"
       done
+      set +e
       logLine "The ViNO docker images have been loaded. Please see the Virtual Network Orchestrator (ViNO) User Guide for detailed instructions on how to setup and run ViNO."
    fi
 
